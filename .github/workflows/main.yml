@@ -6,10 +6,9 @@ on:
       - master  # Or the branch you use for development
 
 jobs:
+  # Deploy job
   deploy:
-    runs-on: ubuntu-latest
-
-   # Add a dependency to the build job
+    # Add a dependency to the build job
     needs: build
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
@@ -22,21 +21,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16' # Specify the Node.js version
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+
