@@ -22,13 +22,7 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Configure Git user
-        run: |
-          git config --global user.name "Pasquale Palena"
-          git config --global user.email "pasquale.palena@gmail.com"
-
-      - name: Deploy
-        run: npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub automatically provides this token
+        
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
