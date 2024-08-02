@@ -13,7 +13,7 @@ export default defineConfig({
     TanStackRouterVite(),
     viteReact(),
   ],
-  base: "/",
+  base: "/buy-wars",
   test: {
     globals: true,
     environment: "jsdom",
