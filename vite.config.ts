@@ -13,6 +13,7 @@ export default defineConfig({
     TanStackRouterVite(),
     viteReact(),
   ],
+  base: "/",
   test: {
     globals: true,
     environment: "jsdom",
